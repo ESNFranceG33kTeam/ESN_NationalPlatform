@@ -3,6 +3,9 @@ package org.np.esn.esnnationalplatform.utils.inject;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.np.esn.esnnationalplatform.ESNApplication;
 
 import javax.inject.Singleton;
@@ -32,5 +35,13 @@ public class AndroidModules {
     @Singleton
     Application providesApplication() {
         return application;
+    }
+
+    @Provides
+    @Singleton
+    Gson provideGson() {
+        return new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create();
     }
 }
