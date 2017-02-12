@@ -1,7 +1,7 @@
 package org.np.esn.esnnationalplatform.utils.inject;
 
 import org.np.esn.esnnationalplatform.ESNApplication;
-import org.np.esn.esnnationalplatform.MainActivity;
+import org.np.esn.esnnationalplatform.activities.MainActivity;
 
 import javax.inject.Singleton;
 

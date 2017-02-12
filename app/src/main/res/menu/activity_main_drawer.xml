@@ -3,34 +3,38 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/menu_schedule"
+            android:icon="@drawable/ic_schedule"
+            android:title="@string/menu_schedule" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/menu_tips"
+            android:icon="@drawable/ic_tips"
+            android:title="@string/menu_tips" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/menu_map"
+            android:icon="@drawable/ic_map"
+            android:title="@string/menu_map" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/menu_awards"
+            android:icon="@drawable/ic_awards"
+            android:title="@string/menu_awards" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/menu_more_info">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_oc_members"
+                    android:icon="@drawable/ic_oc_members"
+                    android:title="@string/menu_oc_members" />
+
+                <item
+                    android:id="@+id/menu_about"
+                    android:icon="@drawable/ic_about"
+                    android:title="@string/menu_about" />
+            </group>
         </menu>
     </item>
-
 </menu>

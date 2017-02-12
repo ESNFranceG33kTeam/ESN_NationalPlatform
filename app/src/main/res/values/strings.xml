@@ -4,5 +4,13 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!--Strings used in the menu-->
     <string name="action_settings">Settings</string>
+    <string name="menu_schedule">Schedule</string>
+    <string name="menu_tips">Tips</string>
+    <string name="menu_map">Map</string>
+    <string name="menu_awards">Awards</string>
+    <string name="menu_more_info">More Info</string>
+    <string name="menu_oc_members">OC Members</string>
+    <string name="menu_about">About</string>
 </resources>
