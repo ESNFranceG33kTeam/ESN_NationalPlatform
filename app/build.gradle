@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven { url 'https://maven.fabric.io/public' }
     }
 
@@ -10,11 +11,12 @@ buildscript {
         // We recommend changing it to the latest version from our changelog:
         // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
         classpath 'io.fabric.tools:gradle:1.+'
-    }
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'    }
 }
 
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'io.fabric'
 
 repositories {
@@ -49,12 +51,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile (
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
-            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1']
-    )
     compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
         transitive = true;
     }
+
+    apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.google.dagger:dagger:2.5'
+    provided 'javax.annotation:jsr250-api:1.0' // needed by the dagger compiler during compilation
 }

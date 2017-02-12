@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 
+import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
+
 import io.fabric.sdk.android.Fabric;
 
 public class ESNApplication extends Application {
@@ -13,5 +15,6 @@ public class ESNApplication extends Application {
         if (BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
+        InjectUtil.initialize(this);
     }
 }
