@@ -6,18 +6,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.np.esn.esnnationalplatform.R;
+import org.np.esn.esnnationalplatform.services.DummyDataRetriever;
+
+import java.util.List;
 
 public class MapFragment extends BaseFragment implements OnMapReadyCallback {
 
     private MapView mapView;
+    private GoogleMap googleMap;
 
     @Nullable
     @Override
@@ -35,10 +43,24 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    public void onMapReady(GoogleMap gMap) {
+        this.googleMap = gMap;
+        DummyDataRetriever dataRetriever = new DummyDataRetriever();
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.esn_star);
+        LatLngBounds bounds = markLocationsAndComputeBounds(dataRetriever.getLocations(), icon);
+        int boundsPadding = 30;
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, boundsPadding);
+        this.googleMap.moveCamera(cameraUpdate);
+        this.googleMap.animateCamera(cameraUpdate);
+    }
+
+    private LatLngBounds markLocationsAndComputeBounds(List<LatLng> locations, BitmapDescriptor icon) {
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (LatLng location: locations) {
+            googleMap.addMarker(new MarkerOptions().position(location).icon(icon));
+            builder.include(location);
+        }
+        return builder.build();
     }
 
     @Override
