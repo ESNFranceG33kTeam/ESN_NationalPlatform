@@ -1,6 +1,7 @@
 package org.np.esn.esnnationalplatform.utils.inject;
 
 import org.np.esn.esnnationalplatform.ESNApplication;
+import org.np.esn.esnnationalplatform.OCMembersAdapter;
 import org.np.esn.esnnationalplatform.activities.MainActivity;
 
 import javax.inject.Singleton;
@@ -18,4 +19,6 @@ public interface AppComponent {
         void inject(ESNApplication application);
 
         void inject(MainActivity mainActivity);
+
+        void inject(OCMembersAdapter ocMembersAdapter);
 }
