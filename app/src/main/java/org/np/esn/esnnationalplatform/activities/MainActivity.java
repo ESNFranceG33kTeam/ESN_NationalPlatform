@@ -1,6 +1,7 @@
 package org.np.esn.esnnationalplatform.activities;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,16 +20,23 @@ import org.np.esn.esnnationalplatform.fragments.MapFragment;
 import org.np.esn.esnnationalplatform.fragments.OCMembersFragment;
 import org.np.esn.esnnationalplatform.fragments.ScheduleFragment;
 import org.np.esn.esnnationalplatform.fragments.TipsFragment;
+import org.np.esn.esnnationalplatform.services.providers.DataProvider;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    DataProvider dataProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InjectUtil.component().inject(this);
+        dataProvider.makeRequest();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

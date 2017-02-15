@@ -16,11 +16,8 @@ public class NationalPlatformInfo {
     @SerializedName("logo_url")
     private String logoUrl;
 
-    @SerializedName("start")
-    private Date startDate;
-
-    @SerializedName("end")
-    private Date endDate;
+    @SerializedName("calendar")
+    private String calendarLink;
 
     @SerializedName("oc_members")
     private ArrayList<Member> members;
@@ -37,11 +34,10 @@ public class NationalPlatformInfo {
         awards = new ArrayList<>();
     }
 
-    public NationalPlatformInfo(String name, String logoUrl, Date startDate, Date endDate, ArrayList<Member> members, ArrayList<Tip> tips, ArrayList<String> awards) {
+    public NationalPlatformInfo(String name, String logoUrl, String calendarLink, ArrayList<Member> members, ArrayList<Tip> tips, ArrayList<String> awards) {
         this.name = name;
         this.logoUrl = logoUrl;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.calendarLink = calendarLink;
         this.members = members;
         this.tips = tips;
         this.awards = awards;
@@ -61,22 +57,6 @@ public class NationalPlatformInfo {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public ArrayList<Member> getMembers() {

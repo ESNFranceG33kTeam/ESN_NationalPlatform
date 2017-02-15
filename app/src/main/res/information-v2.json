@@ -1,0 +1,40 @@
+{
+  "name":"NP Lille 2017",
+  "logo_url":"http://lorempixel.com/g/400/200/",
+  "oc_members":[
+    {
+      "firstname":"Tiphaine",
+      "lastname":"Tournay",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/tiph.jpg"
+    },
+    {
+      "firstname":"Jérémie",
+      "lastname":"Samson",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/jerem.jpg"
+    },
+    {
+      "firstname":"Donatien",
+      "lastname":"Thorez",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/dodo.jpg"
+    },
+    {
+      "firstname":"Mada",
+      "lastname":"Diaconu",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/mada.jpg"
+    }
+  ],
+  "tips":[
+    {
+      "title":"Hashtag",
+      "content":"#Lille #Yolo"
+    },
+    {
+      "title":"Awards",
+      "content":"http://awards.ixesn.fr"
+    }
+  ],
+  "awards":[
+    "Plus gros geek",
+    "Meilleure chanteur"
+  ]
+}
