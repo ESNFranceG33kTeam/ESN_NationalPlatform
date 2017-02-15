@@ -15,4 +15,8 @@
     <string name="menu_more_info">More Info</string>
     <string name="menu_oc_members">OC Members</string>
     <string name="menu_about">About</string>
+    <string name="about_title">ESN National Platform App</string>
+    <string name="about_version_number">v1.0</string>
+    <string name="about_geek_team">© GeekTeam</string>
+    <string name="about_esn_france">ESN France</string>
 </resources>
