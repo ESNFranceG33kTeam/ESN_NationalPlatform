@@ -12,4 +12,17 @@ public class Tip {
 
     @SerializedName("content")
     private String content;
+
+    public Tip(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
 }
