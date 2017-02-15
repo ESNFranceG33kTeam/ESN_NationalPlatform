@@ -3,6 +3,7 @@ package org.np.esn.esnnationalplatform.utils.inject;
 import org.np.esn.esnnationalplatform.ESNApplication;
 import org.np.esn.esnnationalplatform.OCMembersAdapter;
 import org.np.esn.esnnationalplatform.activities.MainActivity;
+import org.np.esn.esnnationalplatform.fragments.MapFragment;
 import org.np.esn.esnnationalplatform.services.AppState;
 import org.np.esn.esnnationalplatform.services.providers.DataProvider;
 import org.np.esn.esnnationalplatform.adapters.TipsAdapter;
@@ -23,11 +24,12 @@ public interface AppComponent {
 
         void inject(MainActivity mainActivity);
 
+        void inject(MapFragment mapFragment);
+
         void inject(OCMembersAdapter ocMembersAdapter);
+        void inject(TipsAdapter tipsAdapter);
 
         void inject(DataProvider dataProvider);
 
         void inject(AppState appState);
-
-        void inject(TipsAdapter tipsAdapter);
 }

@@ -18,19 +18,27 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.np.esn.esnnationalplatform.R;
-import org.np.esn.esnnationalplatform.services.DummyDataRetriever;
+import org.np.esn.esnnationalplatform.services.providers.DummyDataProvider;
+import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class MapFragment extends BaseFragment implements OnMapReadyCallback {
 
     private MapView mapView;
     private GoogleMap googleMap;
 
+    @Inject
+    DummyDataProvider dummyDataProvider;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        InjectUtil.component().inject(this);
         mapView = (MapView) rootView.findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -45,9 +53,8 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap gMap) {
         this.googleMap = gMap;
-        DummyDataRetriever dataRetriever = new DummyDataRetriever();
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.esn_star);
-        LatLngBounds bounds = markLocationsAndComputeBounds(dataRetriever.getLocations(), icon);
+        LatLngBounds bounds = markLocationsAndComputeBounds(dummyDataProvider.getLocations(), icon);
         int boundsPadding = 30;
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, boundsPadding);
         this.googleMap.moveCamera(cameraUpdate);

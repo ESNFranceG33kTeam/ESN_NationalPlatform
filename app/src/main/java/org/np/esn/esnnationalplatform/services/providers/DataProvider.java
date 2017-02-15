@@ -30,7 +30,7 @@ public class DataProvider {
         Call<NationalPlatformInfo> getData();
     }
 
-    public void makeRequest() {
+    public void getData() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://esnp.jeremiesamson.com/")
                 .addConverterFactory(GsonConverterFactory.create())
