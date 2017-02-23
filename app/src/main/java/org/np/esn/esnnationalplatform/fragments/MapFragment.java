@@ -55,13 +55,16 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap gMap) {
         this.googleMap = gMap;
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.esn_star);
-        LatLngBounds bounds = markLocationsAndComputeBounds(
-                appState.getNationalPlatformInfo().getPlaces(),
-                icon);
-        int boundsPadding = 60;
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, boundsPadding);
-        this.googleMap.moveCamera(cameraUpdate);
-        this.googleMap.animateCamera(cameraUpdate);
+        if (!appState.getNationalPlatformInfo().getPlaces().isEmpty()) {
+            LatLngBounds bounds = markLocationsAndComputeBounds(
+                    appState.getNationalPlatformInfo().getPlaces(),
+                    icon);
+            int boundsPadding = 60;
+
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, boundsPadding);
+            this.googleMap.moveCamera(cameraUpdate);
+            this.googleMap.animateCamera(cameraUpdate);
+        }
     }
 
     private LatLngBounds markLocationsAndComputeBounds(List<Place> places, BitmapDescriptor icon) {

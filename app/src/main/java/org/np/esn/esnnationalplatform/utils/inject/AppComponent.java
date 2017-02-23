@@ -1,7 +1,7 @@
 package org.np.esn.esnnationalplatform.utils.inject;
 
 import org.np.esn.esnnationalplatform.ESNApplication;
-import org.np.esn.esnnationalplatform.OCMembersAdapter;
+import org.np.esn.esnnationalplatform.adapters.OCMembersAdapter;
 import org.np.esn.esnnationalplatform.activities.MainActivity;
 import org.np.esn.esnnationalplatform.fragments.MapFragment;
 import org.np.esn.esnnationalplatform.fragments.ScheduleFragment;

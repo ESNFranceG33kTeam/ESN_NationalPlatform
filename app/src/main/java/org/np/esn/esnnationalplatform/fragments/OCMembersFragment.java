@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.np.esn.esnnationalplatform.OCMembersAdapter;
+import org.np.esn.esnnationalplatform.adapters.OCMembersAdapter;
 import org.np.esn.esnnationalplatform.R;
 
 public class OCMembersFragment extends BaseFragment {
