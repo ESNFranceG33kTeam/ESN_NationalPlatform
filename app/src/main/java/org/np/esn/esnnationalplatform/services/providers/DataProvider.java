@@ -1,7 +1,11 @@
 package org.np.esn.esnnationalplatform.services.providers;
 
+import android.content.Context;
+
 import org.np.esn.esnnationalplatform.model.NationalPlatformInfo;
 import org.np.esn.esnnationalplatform.services.AppState;
+import org.np.esn.esnnationalplatform.services.ConnectUtil;
+import org.np.esn.esnnationalplatform.utils.inject.ForApplication;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
 import javax.inject.Inject;
@@ -17,6 +21,10 @@ import retrofit2.http.GET;
 @Singleton
 public class DataProvider {
 
+    @ForApplication
+    @Inject
+    Context context;
+
     @Inject
     AppState appState;
 
@@ -25,12 +33,20 @@ public class DataProvider {
         InjectUtil.component().inject(this);
     }
 
-    private interface DataProviderInterface{
+    private interface DataProviderInterface {
         @GET("/esnp.json")
         Call<NationalPlatformInfo> getData();
     }
 
     public void getData() {
+        if (ConnectUtil.isNetworkAvailable(context)) {
+            makeRequest();
+        } else {
+            appState.loadFromCache();
+        }
+    }
+
+    public void makeRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://esnp.jeremiesamson.com/")
                 .addConverterFactory(GsonConverterFactory.create())

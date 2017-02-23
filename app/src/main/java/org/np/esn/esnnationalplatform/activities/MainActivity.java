@@ -19,6 +19,8 @@ import org.np.esn.esnnationalplatform.fragments.MapFragment;
 import org.np.esn.esnnationalplatform.fragments.OCMembersFragment;
 import org.np.esn.esnnationalplatform.fragments.ScheduleFragment;
 import org.np.esn.esnnationalplatform.fragments.TipsFragment;
+import org.np.esn.esnnationalplatform.services.AppState;
+import org.np.esn.esnnationalplatform.services.ConnectUtil;
 import org.np.esn.esnnationalplatform.services.providers.DataProvider;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity
 
     @Inject
     DataProvider dataProvider;
+    @Inject
+    AppState appState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
