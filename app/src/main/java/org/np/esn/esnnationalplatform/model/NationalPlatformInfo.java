@@ -34,19 +34,25 @@ public class NationalPlatformInfo {
     @SerializedName("awards")
     private ArrayList<String> awards;
 
+    @SerializedName("events")
+    private ArrayList<EsnEvent> events;
+
     public NationalPlatformInfo() {
         members = new ArrayList<>();
         tips = new ArrayList<>();
         awards = new ArrayList<>();
+        events = new ArrayList<>();
+        places = new ArrayList<>();
     }
 
-    public NationalPlatformInfo(String name, String logoUrl, String calendarLink, ArrayList<Member> members, ArrayList<Tip> tips, ArrayList<String> awards) {
+    public NationalPlatformInfo(String name, String logoUrl, String calendarLink, ArrayList<Member> members, ArrayList<Tip> tips, ArrayList<String> awards, ArrayList<EsnEvent> events) {
         this.name = name;
         this.logoUrl = logoUrl;
         this.calendarLink = calendarLink;
         this.members = members;
         this.tips = tips;
         this.awards = awards;
+        this.events = events;
     }
 
     public String getName() {
@@ -95,5 +101,13 @@ public class NationalPlatformInfo {
 
     public void setPlaces(ArrayList<Place> places) {
         this.places = places;
+    }
+
+    public ArrayList<EsnEvent> getEvents() {
+        return events;
+    }
+
+    public void setEvents(ArrayList<EsnEvent> events) {
+        this.events = events;
     }
 }
