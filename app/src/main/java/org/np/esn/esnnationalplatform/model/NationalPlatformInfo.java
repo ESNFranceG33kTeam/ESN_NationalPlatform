@@ -19,11 +19,17 @@ public class NationalPlatformInfo {
     @SerializedName("calendar")
     private String calendarLink;
 
+    @SerializedName("updated_at")
+    private String updatedAt;
+
     @SerializedName("oc_members")
     private ArrayList<Member> members;
 
     @SerializedName("tips")
     private ArrayList<Tip> tips;
+
+    @SerializedName("places")
+    private ArrayList<Place> places;
 
     @SerializedName("awards")
     private ArrayList<String> awards;

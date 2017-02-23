@@ -13,6 +13,15 @@ public class Member {
     @SerializedName("lastname")
     private String lastname;
 
+    @SerializedName("nickname")
+    private String nickname;
+
+    @SerializedName("role")
+    private String role;
+
+    @SerializedName("tel")
+    private String tel;
+
     @SerializedName("profile_picture")
     private String profilePicture;
 
