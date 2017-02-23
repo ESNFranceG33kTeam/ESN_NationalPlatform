@@ -88,4 +88,12 @@ public class NationalPlatformInfo {
     public void setAwards(ArrayList<String> awards) {
         this.awards = awards;
     }
+
+    public ArrayList<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(ArrayList<Place> places) {
+        this.places = places;
+    }
 }

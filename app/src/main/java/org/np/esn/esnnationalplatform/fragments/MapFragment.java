@@ -18,7 +18,8 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.np.esn.esnnationalplatform.R;
-import org.np.esn.esnnationalplatform.services.providers.DummyDataProvider;
+import org.np.esn.esnnationalplatform.model.Place;
+import org.np.esn.esnnationalplatform.services.AppState;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback {
     private GoogleMap googleMap;
 
     @Inject
-    DummyDataProvider dummyDataProvider;
+    AppState appState;
 
     @Nullable
     @Override
@@ -54,18 +55,25 @@ public class MapFragment extends BaseFragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap gMap) {
         this.googleMap = gMap;
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.esn_star);
-        LatLngBounds bounds = markLocationsAndComputeBounds(dummyDataProvider.getLocations(), icon);
-        int boundsPadding = 30;
+        LatLngBounds bounds = markLocationsAndComputeBounds(
+                appState.getNationalPlatformInfo().getPlaces(),
+                icon);
+        int boundsPadding = 60;
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, boundsPadding);
         this.googleMap.moveCamera(cameraUpdate);
         this.googleMap.animateCamera(cameraUpdate);
     }
 
-    private LatLngBounds markLocationsAndComputeBounds(List<LatLng> locations, BitmapDescriptor icon) {
+    private LatLngBounds markLocationsAndComputeBounds(List<Place> places, BitmapDescriptor icon) {
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        for (LatLng location: locations) {
-            googleMap.addMarker(new MarkerOptions().position(location).icon(icon));
-            builder.include(location);
+        for (Place place: places) {
+            LatLng coordinates = new LatLng(Double.parseDouble(place.getCoordX()), Double.parseDouble(place.getCoordY()));
+            googleMap.addMarker(new MarkerOptions()
+                    .position(coordinates)
+                    .title(place.getTitle())
+                    .snippet(place.getDescription())
+                    .icon(icon));
+            builder.include(coordinates);
         }
         return builder.build();
     }
