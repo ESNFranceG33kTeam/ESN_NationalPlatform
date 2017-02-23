@@ -2,6 +2,8 @@ package org.np.esn.esnnationalplatform.services.providers;
 
 import android.content.Context;
 
+import com.crashlytics.android.Crashlytics;
+
 import org.np.esn.esnnationalplatform.model.NationalPlatformInfo;
 import org.np.esn.esnnationalplatform.services.AppState;
 import org.np.esn.esnnationalplatform.services.ConnectUtil;
@@ -62,7 +64,7 @@ public class DataProvider {
 
             @Override
             public void onFailure(Call<NationalPlatformInfo> call, Throwable t) {
-                //FIXME
+                Crashlytics.logException(t);
             }
         });
     }
