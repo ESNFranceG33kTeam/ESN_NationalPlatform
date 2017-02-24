@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
 
 import org.np.esn.esnnationalplatform.R;
@@ -20,7 +22,6 @@ import org.np.esn.esnnationalplatform.fragments.OCMembersFragment;
 import org.np.esn.esnnationalplatform.fragments.ScheduleFragment;
 import org.np.esn.esnnationalplatform.fragments.TipsFragment;
 import org.np.esn.esnnationalplatform.services.AppState;
-import org.np.esn.esnnationalplatform.services.ConnectUtil;
 import org.np.esn.esnnationalplatform.services.providers.DataProvider;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.inflateHeaderView(R.layout.view_menu_header);
+        ((ViewGroup)headerView.getParent()).removeView(headerView);
+        navigationView.addHeaderView(headerView);
 
         addFragment(new ScheduleFragment());
     }

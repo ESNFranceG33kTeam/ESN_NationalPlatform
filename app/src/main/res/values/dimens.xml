@@ -11,4 +11,5 @@
     <dimen name="tips_height">110dp</dimen>
     <dimen name="tips_corner_radius">4dp</dimen>
     <dimen name="tips_card_elevation">10dp</dimen>
+    <dimen name="menu_logo_padding">16dp</dimen>
 </resources>
