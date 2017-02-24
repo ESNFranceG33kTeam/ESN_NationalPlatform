@@ -6,8 +6,11 @@ import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 
+import com.squareup.otto.Bus;
+
 import org.np.esn.esnnationalplatform.model.NationalPlatformInfo;
 import org.np.esn.esnnationalplatform.utils.inject.ForApplication;
+import org.np.esn.esnnationalplatform.services.events.DataChangedEvent;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
 import javax.inject.Inject;
@@ -21,10 +24,12 @@ public class AppState {
     Context context;
 
     private NationalPlatformInfo nationalPlatformInfo;
+    private Bus bus;
 
     @Inject
     public AppState() {
         InjectUtil.component().inject(this);
+        bus = new Bus();
     }
 
     public NationalPlatformInfo getNationalPlatformInfo(){
@@ -57,5 +62,10 @@ public class AppState {
         String json = gson.toJson(nationalPlatformInfo);
         prefsEditor.putString("NationalPlatformInfo", json);
         prefsEditor.apply();
+        bus.post(new DataChangedEvent());
+    }
+
+    public Bus getBus() {
+        return bus;
     }
 }

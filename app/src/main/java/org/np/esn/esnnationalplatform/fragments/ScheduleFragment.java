@@ -7,15 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.crashlytics.android.Crashlytics;
 import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
 import com.github.tibolte.agendacalendarview.models.BaseCalendarEvent;
 import com.github.tibolte.agendacalendarview.models.CalendarEvent;
 import com.github.tibolte.agendacalendarview.models.DayItem;
+import com.squareup.otto.Subscribe;
 
 import org.np.esn.esnnationalplatform.R;
 import org.np.esn.esnnationalplatform.model.EsnEvent;
 import org.np.esn.esnnationalplatform.services.AppState;
+import org.np.esn.esnnationalplatform.services.events.DataChangedEvent;
 import org.np.esn.esnnationalplatform.utils.inject.InjectUtil;
 
 import java.text.ParseException;
@@ -35,24 +38,31 @@ public class ScheduleFragment extends BaseFragment {
     @Inject
     AppState appState;
 
+    private AgendaCalendarView agendaCalendarView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
-        AgendaCalendarView agendaCalendarView = (AgendaCalendarView)rootView.findViewById(R.id.agenda_calendar_view);
         InjectUtil.component().inject(this);
+        agendaCalendarView = (AgendaCalendarView)rootView.findViewById(R.id.agenda_calendar_view);
 
+        initEvents();
+
+        return rootView;
+    }
+
+    private void initEvents() {
         Calendar minDate = Calendar.getInstance();
         Calendar maxDate = Calendar.getInstance();
 
         minDate.set(Calendar.DAY_OF_MONTH, 1);
         maxDate.add(Calendar.MONTH, 1);
-
         List<CalendarEvent> events = new ArrayList<>();
         try {
-            events = buildEventList(appState.getNationalPlatformInfo().getEvents());
+            events = buildEventList();
         } catch (ParseException e) {
-            e.printStackTrace();
+            Crashlytics.logException(e);
         }
 
         agendaCalendarView.init(events, minDate, maxDate, Locale.getDefault(), new CalendarPickerController() {
@@ -71,10 +81,10 @@ public class ScheduleFragment extends BaseFragment {
 
             }
         });
-        return rootView;
     }
 
-    private List<CalendarEvent> buildEventList(ArrayList<EsnEvent> esnEvents) throws ParseException {
+    private List<CalendarEvent> buildEventList() throws ParseException {
+        List<EsnEvent> esnEvents = appState.getNationalPlatformInfo().getEvents();
         List<CalendarEvent> eventList = new ArrayList<>();
         for (EsnEvent event: esnEvents) {
             Calendar start = getCalendarFromString(event.getStart());
@@ -107,6 +117,23 @@ public class ScheduleFragment extends BaseFragment {
     private String getHourFromCalendar (Calendar calendar) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TIME_FORMAT);
         return simpleDateFormat.format(calendar.getTime());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        appState.getBus().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        appState.getBus().unregister(this);
+    }
+
+    @Subscribe
+    public void onDataChangedEvent(DataChangedEvent event) {
+        initEvents();
     }
 
     @Override

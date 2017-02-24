@@ -4,8 +4,11 @@ import org.np.esn.esnnationalplatform.ESNApplication;
 import org.np.esn.esnnationalplatform.adapters.AwardsAdapter;
 import org.np.esn.esnnationalplatform.adapters.OCMembersAdapter;
 import org.np.esn.esnnationalplatform.activities.MainActivity;
+import org.np.esn.esnnationalplatform.fragments.AwardsFragment;
 import org.np.esn.esnnationalplatform.fragments.MapFragment;
+import org.np.esn.esnnationalplatform.fragments.OCMembersFragment;
 import org.np.esn.esnnationalplatform.fragments.ScheduleFragment;
+import org.np.esn.esnnationalplatform.fragments.TipsFragment;
 import org.np.esn.esnnationalplatform.services.AppState;
 import org.np.esn.esnnationalplatform.services.providers.DataProvider;
 import org.np.esn.esnnationalplatform.adapters.TipsAdapter;
@@ -36,6 +39,10 @@ public interface AppComponent {
         void inject(AppState appState);
 
         void inject(ScheduleFragment scheduleFragment);
+        void inject(AwardsFragment awardsFragment);
+        void inject(TipsFragment tipsFragment);
+        void inject(OCMembersFragment ocMembersFragment);
 
         void inject(AwardsAdapter awardsAdapter);
+
 }
