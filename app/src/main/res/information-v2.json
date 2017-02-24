@@ -1,0 +1,112 @@
+{
+  "name":"NP Lille 2017",
+  "logo_url":"http://lorempixel.com/g/400/200/",
+  "calendar": "https://calendar.google.com/calendar/embed?src=spcepnmj0t34lp6ujgp8rdqbus%40group.calendar.google.com&ctz=Europe/Brussels",
+  "updated_at": "2017-02-15 23:11:10",
+  "oc_members":[
+    {
+      "firstname":"Tiphaine",
+      "lastname":"Tournay",
+      "nickname": "Capitain Tyran",
+      "role": "Head of OC",
+      "tel":"0612775758",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/tiph.jpg"
+    },
+    {
+      "firstname":"Marie",
+      "lastname":"Mullier",
+      "nickname": "Capitain Projo",
+      "role": "Respo Plénières",
+      "tel":"0631431136",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/marie.jpg"
+    },
+    {
+      "firstname":"Éric",
+      "lastname":"Dott",
+      "nickname": "Capitain Fire",
+      "role": "Respo Com",
+      "tel":"0675871011",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/eric.jpg"
+    },
+    {
+      "firstname":"Léa",
+      "lastname":"De Ruyter",
+      "nickname": "Capitain Cheville de bois",
+      "role": "Respo Transports",
+      "tel":"0630581965",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/lea.jpg"
+    },
+    {
+      "firstname":"Oussama",
+      "lastname":"Belouki",
+      "nickname": "Captain Couette",
+      "role": "Respo Logement",
+      "tel":"0601407730",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/oussama.jpg"
+    },
+    {
+      "firstname":"Pierre",
+      "lastname":"Morette",
+      "nickname": "Captain Cuitard",
+      "role": "Respo Soirée",
+      "tel":"0674973980",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/pierro.jpg"
+    },
+    {
+      "firstname":"Coralie",
+      "lastname":"Evrard",
+      "nickname": "Captain Ptite Chips",
+      "role": "Respo Ravitaillement",
+      "tel":"0682018221",
+      "profile_picture":"http://esnp.jeremiesamson.com/uploads/coco.jpg"
+    }
+  ],
+  "tips":[
+    {
+      "title":"Métro le plus proche",
+      "content":"Cité Scientifique"
+    },
+    {
+      "title":"Code Heetch",
+      "content":"ESNLille"
+    },
+    {
+      "title":"Hashtag",
+      "content":"#NPLille"
+    },
+    {
+      "title":"Awards",
+      "content":"http://awards.ixesn.fr"
+    }
+  ],
+  "awards":[
+    "Plus gros geek",
+    "Meilleure chanteur"
+  ],
+  "places":[
+    {
+      "title":"Hôtel Première Classe (Dodo)",
+      "description":"Rue Chanzy, 59260, Lezennes",
+      "coord_x":"50.6131554",
+      "coord_y":"3.119827"
+    },
+    {
+      "title":"Maison des étudiants (Plénière)",
+      "description":"Université de Lille 1, 59650, Villeneuve d'Ascq",
+      "coord_x":"50.6090524",
+      "coord_y":"3.135869"
+    },
+    {
+      "title":"Conseil Régional Hauts-de-France (Pot)",
+      "description":"Avenue du Président Hoover, 59000, Lille",
+      "coord_x":"50.6301561",
+      "coord_y":"3.0767472"
+    },
+    {
+      "title":"Brasserie Le Flore (Miam miam / glou glou)",
+      "description":"11 Place Rihour, 59000, Lille",
+      "coord_x":"50.6359789",
+      "coord_y":"3.0632202"
+    }
+  ]
+}
