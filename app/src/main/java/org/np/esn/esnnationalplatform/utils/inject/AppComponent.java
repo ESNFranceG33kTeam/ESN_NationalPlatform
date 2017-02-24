@@ -1,6 +1,7 @@
 package org.np.esn.esnnationalplatform.utils.inject;
 
 import org.np.esn.esnnationalplatform.ESNApplication;
+import org.np.esn.esnnationalplatform.adapters.AwardsAdapter;
 import org.np.esn.esnnationalplatform.adapters.OCMembersAdapter;
 import org.np.esn.esnnationalplatform.activities.MainActivity;
 import org.np.esn.esnnationalplatform.fragments.MapFragment;
@@ -35,4 +36,6 @@ public interface AppComponent {
         void inject(AppState appState);
 
         void inject(ScheduleFragment scheduleFragment);
+
+        void inject(AwardsAdapter awardsAdapter);
 }
