@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.inflateHeaderView(R.layout.view_menu_header);
         ((ViewGroup)headerView.getParent()).removeView(headerView);
         navigationView.addHeaderView(headerView);
-
+        navigationView.getMenu().getItem(0).setChecked(true);
         addFragment(new ScheduleFragment());
     }
 
